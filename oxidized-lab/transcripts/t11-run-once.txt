@@ -1,0 +1,11 @@
+$ OXIDIZED_HOME=<copy with run_once: true> oxidized   (one pass, then it exits by itself)
+2026-11-07 22:40:45.341896 I [208560:1280] Oxidized::CLI -- Oxidized starting, running as pid 208560
+2026-11-07 22:40:45.342852 I [208560:1280] Oxidized::Nodes -- Loading nodes
+2026-11-07 22:40:45.669909 I [208560:1280] Oxidized::Nodes -- Loaded 3 nodes
+2026-11-07 22:40:53.676494 I [208560:1280] Oxidized::Worker -- Configuration updated for branch/branch-switch-01
+2026-11-07 22:40:53.744863 W [208560:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:40:54.677049 I [208560:1280] Oxidized::Nodes -- Add node depot-gateway-01 to running jobs
+2026-11-07 22:40:54.677164 W [208560:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retry attempt 1
+2026-11-07 22:40:54.746693 W [208560:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:40:55.677704 W [208560:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retries exhausted, giving up
+exit:0

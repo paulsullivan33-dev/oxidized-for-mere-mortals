@@ -1,0 +1,15 @@
+2026-11-07 22:39:28.937405 I [207889:1280] Oxidized::CLI -- Oxidized starting, running as pid 207889
+2026-11-07 22:39:28.938341 I [207889:1280] Oxidized::Nodes -- Loading nodes
+2026-11-07 22:39:29.299510 I [207889:1280] Oxidized::Nodes -- Loaded 3 nodes
+2026-11-07 22:39:30.019481 I [207889:2160] Oxidized::API::Web -- Oxidized-web server listening on 127.0.0.1:18088
+2026-11-07 22:39:33.964817 I [207889:1280] Oxidized::Worker -- Configuration updated for branch/branch-router-01
+2026-11-07 22:39:37.968259 I [207889:1280] Oxidized::Worker -- Configuration updated for branch/branch-switch-01
+2026-11-07 22:39:38.037643 W [207889:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:39:38.968853 I [207889:1280] Oxidized::Nodes -- Add node depot-gateway-01 to running jobs
+2026-11-07 22:39:38.969026 W [207889:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retry attempt 1
+2026-11-07 22:39:39.038798 W [207889:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:39:39.969533 W [207889:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retries exhausted, giving up
+2026-11-07 22:40:16.193469 I [207889:puma srv tp 001] Oxidized::Nodes -- Add node branch-router-01 to running jobs
+2026-11-07 22:40:20.983167 I [207889:1280] Oxidized::Worker -- Configuration updated for branch/branch-router-01
+2026-11-07 22:40:36.216166 I [207889:puma srv tp 001] Oxidized::Nodes -- Loading nodes
+2026-11-07 22:40:36.217069 I [207889:puma srv tp 001] Oxidized::Nodes -- Loaded 3 nodes

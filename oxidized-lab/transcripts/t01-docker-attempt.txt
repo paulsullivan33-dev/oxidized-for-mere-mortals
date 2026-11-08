@@ -1,0 +1,11 @@
+$ docker run --rm hello-world
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error spawning mount remapping thread: mount source thread: join container mntns: setns: operation not permitted
+
+Run 'docker run --help' for more information
+
+$ docker run --rm --privileged hello-world
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error spawning mount remapping thread: mount source thread: join container mntns: setns: operation not permitted
+
+Run 'docker run --help' for more information

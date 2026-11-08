@@ -1,0 +1,5 @@
+$ ruby --version (built from ruby-3.3.9.tar.gz, cache.ruby-lang.org)
+ruby 3.3.9 (2025-07-24 revision f5c772fc7c) [x86_64-linux]
+openssl: OpenSSL 3.0.13 30 Jan 2024
+psych: 5.1.2
+3.5.22

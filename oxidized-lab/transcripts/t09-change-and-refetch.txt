@@ -1,0 +1,33 @@
+$ curl http://127.0.0.1:18088/node/next/branch/branch-router-01.json
+["ok"]
+$ tail of the daemon log after the trigger
+2026-11-07 22:39:39.038798 W [207889:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:39:39.969533 W [207889:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retries exhausted, giving up
+2026-11-07 22:40:16.193469 I [207889:puma srv tp 001] Oxidized::Nodes -- Add node branch-router-01 to running jobs
+2026-11-07 22:40:20.983167 I [207889:1280] Oxidized::Worker -- Configuration updated for branch/branch-router-01
+$ git --git-dir=branch.git log (in lab home)
+28a7d9f 2026-11-07 22:40:20 +0000 update branch/branch-router-01
+ccb480a 2026-11-07 22:39:37 +0000 update branch/branch-switch-01
+382de69 2026-11-07 22:39:33 +0000 update branch/branch-router-01
+$ git diff between the two router versions
+diff --git a/branch-router-01 b/branch-router-01
+index fefa0e6..731b332 100644
+--- a/branch-router-01
++++ b/branch-router-01
+@@ -42,7 +42,7 @@ ip domain name northfield.example
+ ip name-server 10.40.0.53
+ !
+ interface GigabitEthernet0/0
+- description Uplink to the fictional branch LAN
++ description Uplink to the branch LAN - refitted by the lab
+  ip address 10.40.1.1 255.255.255.0
+  duplex auto
+  speed auto
+@@ -52,6 +52,7 @@ interface GigabitEthernet0/1
+  no ip address
+  shutdown
+ !
++ntp server 10.40.0.53
+ ip route 0.0.0.0 0.0.0.0 10.40.1.254
+ !
+ snmp-server community <configuration removed>

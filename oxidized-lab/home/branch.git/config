@@ -1,0 +1,7 @@
+[core]
+	bare = true
+	repositoryformatversion = 0
+	filemode = true
+[user]
+	name = Oxidized Lab
+	email = oxidized-lab@example.invalid

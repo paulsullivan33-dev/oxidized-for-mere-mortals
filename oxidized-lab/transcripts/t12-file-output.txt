@@ -1,0 +1,28 @@
+$ OXIDIZED_HOME=<copy with output: file, run_once: true> oxidized
+2026-11-07 22:43:02.208152 I [209226:1280] Oxidized::CLI -- Oxidized starting, running as pid 209226
+2026-11-07 22:43:02.209532 I [209226:1280] Oxidized::Nodes -- Loading nodes
+2026-11-07 22:43:02.462603 I [209226:1280] Oxidized::Nodes -- Loaded 3 nodes
+2026-11-07 22:43:06.468111 I [209226:1280] Oxidized::Worker -- Configuration updated for branch/branch-router-01
+2026-11-07 22:43:10.469689 I [209226:1280] Oxidized::Worker -- Configuration updated for branch/branch-switch-01
+2026-11-07 22:43:10.547599 W [209226:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:43:11.470987 I [209226:1280] Oxidized::Nodes -- Add node depot-gateway-01 to running jobs
+2026-11-07 22:43:11.471089 W [209226:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retry attempt 1
+2026-11-07 22:43:11.551507 W [209226:Job 'depot-gateway-01'] Oxidized::Node -- 127.0.0.1 raised Net::SSH::AuthenticationFailed with msg "Authentication failed for user root@127.0.0.1"
+2026-11-07 22:43:12.471616 W [209226:1280] Oxidized::Worker -- depot/depot-gateway-01 status no_connection, retries exhausted, giving up
+exit:0
+
+$ find <file-home> -type f (the stored configs)
+/home/hatch/workspace/.batch-351-363/scratch-oxidized/file-home/branch/branch-router-01
+/home/hatch/workspace/.batch-351-363/scratch-oxidized/file-home/branch/branch-switch-01
+
+Note: the configured directory was .../file-home/configs, but grouped nodes are
+stored beside it in a folder named after the group (output/file.rb joins the
+directory's parent with the group name - the same pattern the git output used).
+
+$ head -6 .../file-home/branch/branch-router-01
+! Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! 
+! Image: Software: C2900-UNIVERSALK9-M, 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! Image: Compiled: Wed 24-Jul-19 04:15 by prod_rel_team
+! ROM Bootstrap: Version 15.0(1r)M16, RELEASE SOFTWARE (fc1)
+! Image: flash:c2900-universalk9-mz.SPA.157-3.M3.bin

@@ -1,0 +1,75 @@
+$ git --git-dir=branch.git log --format="%h %an %ad %s" --stat
+ccb480a Oxidized Lab 2026-11-07 22:39:37 +0000 update branch/branch-switch-01
+
+ branch-switch-01 | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+382de69 Oxidized Lab 2026-11-07 22:39:33 +0000 update branch/branch-router-01
+
+ branch-router-01 | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+
+$ git --git-dir=branch.git show HEAD:branch-router-01
+! Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! 
+! Image: Software: C2900-UNIVERSALK9-M, 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! Image: Compiled: Wed 24-Jul-19 04:15 by prod_rel_team
+! ROM Bootstrap: Version 15.0(1r)M16, RELEASE SOFTWARE (fc1)
+! Image: flash:c2900-universalk9-mz.SPA.157-3.M3.bin
+! Chassis type: CISCO2911/K9
+! Memory: main 491520K/32768K
+! Processor ID: FGL0000LAB1
+! CPU: 
+! Memory: nvram 32768K
+! Memory: flash 262144K
+! 
+! VTP: VTP Version capable             : 1 to 3
+! VTP: VTP version running             : 2
+! VTP: VTP Domain Name                 : northfield
+! VTP: VTP Pruning Mode                : Disabled
+! 
+! NAME: "branch-router-01", DESCR: "CISCO2911/K9 chassis (fictional lab unit)"
+! PID: CISCO2911/K9      , VID: V05 , SN: FGL0000LAB1
+! 
+! NAME: "GigabitEthernet0/0", DESCR: "Gigabit Ethernet LAN interface"
+! PID: GE FE ETHERNET    , VID: N/A , SN: LAB000001
+!
+! Last configuration change at 09:12:44 UTC Mon Nov 2 2026 by labadmin
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname branch-router-01
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 <secret hidden>
+!
+no aaa new-model
+!
+ip domain name northfield.example
+ip name-server 10.40.0.53
+!
+interface GigabitEthernet0/0
+ description Uplink to the fictional branch LAN
+ ip address 10.40.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description Spare port - shut in the lab fixture
+ no ip address
+ shutdown
+!
+ip route 0.0.0.0 0.0.0.0 10.40.1.254
+!
+snmp-server community <configuration removed>
+!
+line con 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+end

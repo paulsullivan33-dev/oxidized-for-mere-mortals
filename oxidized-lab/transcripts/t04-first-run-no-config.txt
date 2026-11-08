@@ -1,0 +1,29 @@
+$ OXIDIZED_HOME=<empty folder> oxidized   (first ever run)
+edit /home/hatch/workspace/.batch-351-363/scratch-oxidized/empty-home/config
+
+$ ls the folder afterwards
+total 4
+drwxrwx--- 1 root root  12 Nov  7 22:39 .
+drwxrwx--- 1 root root 600 Nov  7 22:39 ..
+-rw-rw---- 1 root root 763 Nov  7 22:39 config
+$ head of the config it wrote
+---
+username: username
+password: password
+model: junos
+resolve_dns: true
+interval: 3600
+debug: false
+run_once: false
+threads: 30
+use_max_threads: false
+timeout: 20
+timelimit: 300
+retries: 3
+prompt: !ruby/regexp /^([\w.@-]+[#>]\s?)$/
+next_adds_job: false
+vars: {}
+groups: {}
+group_map: {}
+models: {}
+pid: "/home/hatch/workspace/.batch-351-363/scratch-oxidized/empty-home/pid"

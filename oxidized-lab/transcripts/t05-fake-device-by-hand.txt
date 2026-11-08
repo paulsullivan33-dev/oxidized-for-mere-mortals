@@ -1,0 +1,18 @@
+== router key: show version (head) ==
+show version
+exit
+branch-router-01# Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.7(3)M3, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2019 by Cisco Systems, Inc.
+Compiled Wed 24-Jul-19 04:15 by prod_rel_team
+== switch key: show running-config (head) ==
+terminal length 0
+show running-config
+exit
+branch-switch-01# branch-switch-01# Building configuration...
+
+Current configuration : 1874 bytes
+!
+! Last configuration change at 09:12:44 UTC Mon Nov 2 2026 by labadmin
+!
+version 15.7

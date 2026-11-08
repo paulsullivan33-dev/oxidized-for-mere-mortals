@@ -1,0 +1,31 @@
+site_name: Oxidized for Mere Mortals
+site_description: Fetch the running configuration from every router and switch you own, store each version in git, and read the history back. Installing Oxidized, listing your devices, understanding its models, its web API, its secrets problem, and its honest limits.
+site_url: https://paulsullivan33-dev.github.io/oxidized-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Oxidized Is: what-oxidized-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Oxidized: installing-oxidized.md
+  - The Config File: the-config-file.md
+  - Your Node List: your-node-list.md
+  - Your First Fetch: your-first-fetch.md
+  - How a Fetch Works: how-a-fetch-works.md
+  - Models - One Per Device OS: models.md
+  - Storing History in Git: storing-history-in-git.md
+  - Reading the History Back: reading-the-history.md
+  - The Web Pages and REST API: the-web-and-rest-api.md
+  - Triggering and Scheduling: triggering-and-scheduling.md
+  - Secrets and Safety: secrets-and-safety.md
+  - Real Jobs: real-jobs.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

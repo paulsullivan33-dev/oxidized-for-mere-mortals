@@ -1,0 +1,47 @@
+---
+# The Oxidized configuration this guide's lab actually ran.
+# Paths are the lab's own (an OXIDIZED_HOME folder inside the
+# checkout, keys in the batch scratch folder). On your machine the
+# same file lives at ~/.config/oxidized/config with your paths.
+username: root
+password: <redacted>
+model: ios
+interval: 3600
+debug: false
+threads: 5
+use_max_threads: false
+timeout: 20
+timelimit: 120
+retries: 1
+vars:
+  remove_secret: true
+extensions:
+  oxidized-web:
+    load: true
+    listen: 127.0.0.1
+    port: 18088
+pid: /home/hatch/workspace/oxidized-for-mere-mortals/oxidized-lab/home/pid
+input:
+  default: ssh
+  debug: false
+  ssh:
+    secure: false
+output:
+  default: git
+  git:
+    user: Oxidized Lab
+    email: oxidized-lab@example.invalid
+    repo: "/home/hatch/workspace/oxidized-for-mere-mortals/oxidized-lab/home/configs.git"
+source:
+  default: csv
+  csv:
+    file: "/home/hatch/workspace/oxidized-for-mere-mortals/oxidized-lab/home/router.db"
+    delimiter: !ruby/regexp /:/
+    map:
+      name: 0
+      model: 1
+      ip: 2
+      group: 3
+    vars_map:
+      ssh_port: 4
+      ssh_keys: 5

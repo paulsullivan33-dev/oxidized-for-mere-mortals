@@ -1,0 +1,38 @@
+$ curl "http://127.0.0.1:18088/node/version.json?node_full=branch/branch-router-01"
+[
+    {
+        "date": "2026-11-07 22:40:20 +0000",
+        "time": "2026-11-07 22:40:20 +0000",
+        "oid": "28a7d9fc088fac385cb2d857da6ff93c54a77f34",
+        "author": {
+            "name": "Oxidized Lab",
+            "email": "oxidized-lab@example.invalid",
+            "time": "2026-11-07 22:40:20 +0000"
+        },
+        "message": "update branch/branch-router-01"
+    },
+    {
+        "date": "2026-11-07 22:39:33 +0000",
+        "time": "2026-11-07 22:39:33 +0000",
+        "oid": "382de69167776e5c349bafbad2fb4380788e2b13",
+        "author": {
+            "name": "Oxidized Lab",
+            "email": "oxidized-lab@example.invalid",
+            "time": "2026-11-07 22:39:33 +0000"
+        },
+        "message": "update branch/branch-router-01"
+    }
+]
+$ curl http://127.0.0.1:18088/node/fetch/branch/branch-router-01 (first 8 lines)
+! Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! 
+! Image: Software: C2900-UNIVERSALK9-M, 15.7(3)M3, RELEASE SOFTWARE (fc2)
+! Image: Compiled: Wed 24-Jul-19 04:15 by prod_rel_team
+! ROM Bootstrap: Version 15.0(1r)M16, RELEASE SOFTWARE (fc1)
+! Image: flash:c2900-universalk9-mz.SPA.157-3.M3.bin
+! Chassis type: CISCO2911/K9
+! Memory: main 491520K/32768K
+$ curl http://127.0.0.1:18088/reload.json
+["reloaded list of nodes"]
+2026-11-07 22:40:36.216166 I [207889:puma srv tp 001] Oxidized::Nodes -- Loading nodes
+2026-11-07 22:40:36.217069 I [207889:puma srv tp 001] Oxidized::Nodes -- Loaded 3 nodes

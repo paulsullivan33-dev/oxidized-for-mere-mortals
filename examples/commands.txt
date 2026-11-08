@@ -1,0 +1,73 @@
+oxidized — the distilled commands
+====================================================================
+Placeholders: <node> is a node name, <group> its group.
+Every command below is one the lab ran (transcripts in
+oxidized-lab/transcripts/) or names as documented-only in
+the guide.
+
+INSTALL AND FIRST RUN (chapters 3-4)
+--------------------------------------------------------------------
+  gem install oxidized oxidized-web oxidized-script
+                                   # the three gems, onto a Ruby
+                                   # you already have; the lab
+                                   # built Ruby 3.3.9 from source
+                                   # because it had none (t01, t02)
+  oxidized --version               # 0.37.0 - the check every
+                                   # install must pass (t03)
+  oxidized --help                  # the switches this guide uses
+  OXIDIZED_HOME=<folder> oxidized  # first run: writes a starter
+                                   # config and stops with
+                                   # "edit <folder>/config" (t04)
+  oxidized --show-exhaustive-config
+                                   # your file merged over the
+                                   # defaults - the whole truth
+
+THE DAEMON ROUND (chapters 5-7)
+--------------------------------------------------------------------
+  export OXIDIZED_HOME=<folder>    # config, router.db, pid,
+                                   # logs and repos live here
+  oxidized                         # foreground daemon; loads the
+                                   # nodes, fetches at once, then
+                                   # every interval seconds
+  kill $(cat $OXIDIZED_HOME/pid)   # stop it (SIGTERM)
+
+READING THE ARCHIVE (chapters 9-11)
+--------------------------------------------------------------------
+  git --git-dir=<group>.git log --oneline
+                                   # one commit per stored change;
+                                   # grouped nodes live in
+                                   # <group>.git BESIDE the repo
+                                   # path you configured (t08)
+  git --git-dir=<group>.git show HEAD:<node>
+                                   # the current stored document
+  git --git-dir=<group>.git diff <oid1> <oid2> -- <node>
+                                   # what changed, exactly (t09)
+  curl http://127.0.0.1:18088/nodes.json
+                                   # the status board: per node,
+                                   # last status, duration, and
+                                   # mtime ("unknown" = never
+                                   # fetched) (t07)
+  curl http://127.0.0.1:18088/node/fetch/<group>/<node>
+                                   # the stored document as text
+  curl "http://127.0.0.1:18088/node/version.json?node_full=<group>/<node>"
+                                   # the version list, with oids
+
+TRIGGERING (chapter 12)
+--------------------------------------------------------------------
+  curl http://127.0.0.1:18088/node/next/<group>/<node>.json
+                                   # fetch this one next; the lab
+                                   # saw the new commit about 5 s
+                                   # later (t09)
+  curl http://127.0.0.1:18088/reload.json
+                                   # re-read the node list (t10)
+  # in a copy of the config: run_once: true
+  oxidized                         # one pass over the list, then
+                                   # exit 0 (t11)
+
+THE FAKE DEVICE (lab only)
+--------------------------------------------------------------------
+  ssh -tt -i <key> -p 19088 root@127.0.0.1
+                                   # talk to the fixture by hand;
+                                   # the key picks the device (t05)
+  oxs --help                       # the companion CLI from
+                                   # oxidized-script (t13)

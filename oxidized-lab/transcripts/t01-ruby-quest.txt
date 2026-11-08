@@ -1,0 +1,29 @@
+The Ruby quest, in the order the commissioning brief set:
+
+Route 1 - a Ruby already on the machine: no system Ruby -
+nothing on PATH, apt shows none installed, no rbenv/rvm, no
+/usr/lib/ruby. One leftover did exist: ruby 3.2.3 at
+~/workspace/ruby-labwork/bin/ruby, an October task's package
+extraction. The first full search listed it (t00), but that
+command's output was delayed, a narrower re-check missed it,
+and the lab went on to routes 2 and 3 unaware; the hit only
+surfaced when the delayed output arrived after the build.
+The source-built Ruby was used for every run, so no result
+changes; the record is corrected here rather than tidied away.
+
+Route 2 - Docker: the client is Docker 29.1.3 but no daemon was
+running (no /var/run/docker.sock). A daemon started by hand on a
+scratch socket DID start and DID pull hello-world - and then
+every container, even --privileged, failed to start:
+"runc create failed: ... join container mntns: setns: operation
+not permitted" (full text in t01-docker-attempt.txt). The
+sandbox forbids the namespace join containers need. Route dead.
+
+Route 3 - build Ruby from source: ruby-3.3.9.tar.gz from
+cache.ruby-lang.org, configured into the scratch folder with
+gcc 13.3. The one missing piece was libyaml headers; the
+libyaml-dev .deb was downloaded with apt download and unpacked
+into scratch (no system install), and configure was pointed at
+it. make -j3 and make install both exited 0. The built Ruby
+reports OpenSSL 3.0.13 and Psych 5.1.2 - the two extensions
+gem-over-HTTPS and Oxidized's YAML config need (t02-ruby.txt).

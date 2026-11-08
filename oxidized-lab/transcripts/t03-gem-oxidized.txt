@@ -1,0 +1,28 @@
+$ gem list | grep -E "oxidized|rugged|net-ssh"
+asetus (0.4.0)
+net-ssh (7.3.9)
+oxidized (0.37.0)
+rugged (1.9.6)
+semantic_logger (4.18.0)
+$ oxidized --help
+usage: /home/hatch/workspace/.batch-351-363/scratch-oxidized/ruby-install/bin/oxidized [options]
+    -d, --debug               turn on debugging
+    --daemonize               Daemonize/fork the process
+    --support                 show support diagnostics and exit
+    --home-dir                Oxidized home dir
+    --config-file             Oxidized config file
+    -h, --help                show usage
+    --show-exhaustive-config  output entire configuration, including defaults
+    -v, --version             show version
+$ oxidized --version
+0.37.0
+
+$ gem install oxidized-web oxidized-script --no-document (tail)
+Successfully installed charlock_holmes-0.7.9
+Successfully installed oxidized-web-0.18.1
+Successfully installed oxidized-script-0.7.0
+18 gems installed
+$ gem list | grep oxidized
+oxidized (0.37.0)
+oxidized-script (0.7.0)
+oxidized-web (0.18.1)

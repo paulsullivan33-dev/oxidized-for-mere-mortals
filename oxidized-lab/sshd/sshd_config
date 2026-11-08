@@ -1,0 +1,25 @@
+# Lab sshd for the fake devices. Loopback only, one high port, keys only.
+# run-lab.sh copies this file and replaces @LAB@ with the lab folder path
+# and @RUNTIME@ with the scratch runtime folder that holds the keys.
+Port 19088
+ListenAddress 127.0.0.1
+Protocol 2
+HostKey @RUNTIME@/ssh_host_ed25519_key
+PidFile @RUNTIME@/sshd.pid
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile @RUNTIME@/authorized_keys
+AllowUsers root
+UsePAM no
+PermitRootLogin prohibit-password
+AllowTcpForwarding no
+X11Forwarding no
+ExposeAuthInfo yes
+SetEnv FAKE_HOSTS_MAP=@RUNTIME@/hosts.map
+# The sandbox home directory is shared, so StrictModes would refuse
+# the lab AuthorizedKeysFile path. Lab only - a real sshd keeps it on.
+StrictModes no
+Match User root
+    ForceCommand @LAB@/fake-device/fake-ios.sh
+

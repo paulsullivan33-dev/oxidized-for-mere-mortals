@@ -1,0 +1,10 @@
+# The lab node list (CSV source, colon-delimited).
+# Fields: name:model:ip:group:ssh_port:ssh_keys
+# branch-router-01 and branch-switch-01 are the two keys of the fake
+# device behind the lab sshd on 127.0.0.1:19088 - the key decides
+# which device answers. depot-gateway-01 has no key field on purpose:
+# it falls back to the (wrong, fictional) global password, and the
+# lab sshd refuses password logins, so its collection fails for real.
+branch-router-01:ios:127.0.0.1:branch:19088:/home/hatch/workspace/.batch-351-363/scratch-oxidized/runtime/id_router
+branch-switch-01:ios:127.0.0.1:branch:19088:/home/hatch/workspace/.batch-351-363/scratch-oxidized/runtime/id_switch
+depot-gateway-01:ios:127.0.0.1:depot:19088

@@ -1,0 +1,65 @@
+The lab — no Ruby, no containers, one script playing two routers
+====================================================================
+
+The lab is Oxidized as its project ships it: the real gems
+(oxidized 0.37.0, oxidized-web 0.18.1, oxidized-script 0.7.0
+from rubygems.org) on a Ruby the lab had to build itself,
+because the build machine (an Ubuntu 24.04 sandbox) had no
+Ruby installed (an off-PATH 3.2.3 leftover from an October
+task in ~/workspace/ruby-labwork was found only after the
+build, and never used) and its Docker daemon — started by hand on a
+scratch socket — could pull images but not start containers
+(runc: "setns: operation not permitted", even --privileged).
+Ruby 3.3.9 was built from the official tarball into the batch
+scratch folder; the one missing piece, libyaml headers, came
+from an apt-downloaded .deb unpacked into the same scratch,
+no system installs. Full story: transcripts t00-t03.
+
+  * The fake network (oxidized-lab/): two fictional devices,
+    branch-router-01 and branch-switch-01, and one designed
+    failure, depot-gateway-01, for a fictional branch network
+    ("northfield"). Addresses are 127.0.0.1 and 10.40.0.x
+    inside the canned text; nothing is anyone's real network.
+
+  * The fake device (fake-device/fake-ios.sh): a bash script
+    played by an OpenSSH server on 127.0.0.1:19088 (sshd/
+    sshd_config, ForceCommand). It prints an IOS-like prompt
+    and answers show version / show vtp status / show
+    inventory / show running-config from canned text, with
+    fake secrets planted to be scrubbed. Two client keys make
+    it answer as two hostnames: the sshd runs with
+    ExposeAuthInfo and the script maps the key blob in
+    $SSH_USER_AUTH through a driver-written hosts.map.
+    depot-gateway-01 has no key in router.db, falls back to a
+    wrong password, and the sshd refuses passwords — a real
+    authentication failure, not a staged log line.
+
+  * The daemon (home/config, home/router.db): OXIDIZED_HOME
+    inside the checkout, CSV source, SSH input, git output,
+    interval 3600, retries 1, remove_secret: true, web
+    extension on 127.0.0.1:18088. Its git archive (home/
+    branch.git) is kept in the checkout as evidence — the
+    group-named repository beside the configured path is
+    itself one of the findings. run-lab.sh rebuilds the
+    whole setup: keys, sshd, daemon, API probe.
+
+  * Every claim's evidence (transcripts/): t00 the Ruby-less
+    environment; t01 the quest (Docker's setns failure, the
+    source build); t02 the built Ruby's version/OpenSSL/
+    Psych; t03 gem installs, --version, --help; t04 the
+    first-run starter config; t05 the fake device by hand;
+    t06 the daemon round (2 updates, 1 auth failure retried
+    and given up); t07 /nodes.json with timings and the
+    stats.json quirk; t08 the git store and the scrubbed,
+    commented stored document; t09 change + /node/next +
+    commit + diff; t10 version/fetch/reload API; t11 the
+    run-once pass; t12 the file output and its group folder;
+    t13 oxs --help and the 198 model files.
+
+  * Accidents kept on record: the first lab sshd refused the
+    (nonexistent) "hatch" login — the sandbox user is root;
+    StrictModes then refused the key path until the lab
+    config disabled it (lab only); and the file-output
+    transcript's first capture hung on a shell-script bug in
+    the capture itself (a head with no file, reading stdin),
+    not in Oxidized — the run was repeated cleanly as t12.

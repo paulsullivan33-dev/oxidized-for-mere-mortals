@@ -1,0 +1,104 @@
+$ curl http://127.0.0.1:18088/nodes.json
+[
+    {
+        "name": "branch-router-01",
+        "full_name": "branch/branch-router-01",
+        "ip": "127.0.0.1",
+        "group": "branch",
+        "model": "IOS",
+        "last": {
+            "start": "2026-11-07 22:39:29 UTC",
+            "end": "2026-11-07 22:39:33 UTC",
+            "status": "success",
+            "time": 3.356555397
+        },
+        "vars": {
+            "ssh_port": "19088",
+            "ssh_keys": "/home/hatch/workspace/.batch-351-363/scratch-oxidized/runtime/id_router"
+        },
+        "mtime": "2026-11-07 22:39:33 UTC",
+        "status": "success",
+        "time": "2026-11-07 22:39:33 UTC"
+    },
+    {
+        "name": "branch-switch-01",
+        "full_name": "branch/branch-switch-01",
+        "ip": "127.0.0.1",
+        "group": "branch",
+        "model": "IOS",
+        "last": {
+            "start": "2026-11-07 22:39:33 UTC",
+            "end": "2026-11-07 22:39:37 UTC",
+            "status": "success",
+            "time": 3.303875247
+        },
+        "vars": {
+            "ssh_port": "19088",
+            "ssh_keys": "/home/hatch/workspace/.batch-351-363/scratch-oxidized/runtime/id_switch"
+        },
+        "mtime": "2026-11-07 22:39:37 UTC",
+        "status": "success",
+        "time": "2026-11-07 22:39:37 UTC"
+    },
+    {
+        "name": "depot-gateway-01",
+        "full_name": "depot/depot-gateway-01",
+        "ip": "127.0.0.1",
+        "group": "depot",
+        "model": "IOS",
+        "last": {
+            "start": "2026-11-07 22:39:38 UTC",
+            "end": "2026-11-07 22:39:39 UTC",
+            "status": "no_connection",
+            "time": 0.069788543
+        },
+        "vars": {
+            "ssh_port": "19088",
+            "ssh_keys": null
+        },
+        "mtime": "unknown",
+        "status": "no_connection",
+        "time": "2026-11-07 22:39:39 UTC"
+    }
+]
+
+$ curl http://127.0.0.1:18088/nodes/stats.json
+{
+    "branch-router-01": "#<Oxidized::Node::Stats:0x00007a8845f7e4a8>",
+    "branch-switch-01": "#<Oxidized::Node::Stats:0x00007a8845f79110>",
+    "depot-gateway-01": "#<Oxidized::Node::Stats:0x00007a8845f72dd8>"
+}
+
+$ curl -o /dev/null -w "%{http_code}" http://127.0.0.1:18088/  (web front page)
+302
+$ curl http://127.0.0.1:18088/node/show/branch-router-01 (head)
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta content='IE=edge' meta-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<meta content='notranslate' name='google'>
+<title>oxidized</title>
+<link href='/images/favicon.ico' rel='shortcut icon'>
+<link href='/weblibs/bootstrap.css' rel='stylesheet'>
+<link href='/weblibs/bootstrap-icons.css' rel='stylesheet'>
+<link href='/weblibs/dataTables.bootstrap5.css' rel='stylesheet'>
+<link href='/weblibs/buttons.bootstrap5.css' rel='stylesheet'>
+<link href='/css/oxidized.css' rel='stylesheet'>
+<script src='/weblibs/jquery.js'></script>
+<script src='/weblibs/bootstrap.bundle.js'></script>
+<script src='/weblibs/dataTables.js'></script>
+<script src='/weblibs/dataTables.bootstrap5.js'></script>
+<script src='/weblibs/dataTables.buttons.js'></script>
+<script src='/weblibs/buttons.bootstrap5.js'></script>
+<script src='/weblibs/buttons.colVis.js'></script>
+<script src='/weblibs/dayjs.min.js'></script>
+<script src='/weblibs/dayjs-plugin-utc.min.js'></script>
+<script>dayjs.extend(dayjsPluginUTC.default)</script>
+<script src='/scripts/oxidized.js'></script>
+<script src='/scripts/theme-toggle.js'></script>
+</head>
+
+<body>
+<nav class='navbar navbar-expand-lg bg-body-tertiary border-bottom border-secondary-subtle mb-4'>
